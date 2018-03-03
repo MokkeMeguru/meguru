@@ -12,4 +12,5 @@
 
 * Hello World
   Nikola + Org-mode で記事を作成しました
+  #+ATTR_HTML: width="100px"
   [[img-url:/images/plant2.png]]
