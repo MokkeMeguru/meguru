@@ -5,12 +5,12 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1520107190.3439393
+_modified_time = 1520107335.1378424
 _enable_loop = True
 _template_filename = '/usr/local/lib/python3.5/dist-packages/nikola/data/themes/base/templates/math_helper.tmpl'
 _template_uri = 'math_helper.tmpl'
 _source_encoding = 'ascii'
-_exports = ['math_styles_ifposts', 'math_styles', 'math_scripts_ifpost', 'math_scripts_ifposts', 'math_scripts', 'math_styles_ifpost']
+_exports = ['math_scripts_ifposts', 'math_styles_ifpost', 'math_scripts_ifpost', 'math_scripts', 'math_styles', 'math_styles_ifposts']
 
 
 def render_body(context,**pageargs):
@@ -29,31 +29,34 @@ def render_body(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_math_styles_ifposts(context,posts):
+def render_math_scripts_ifposts(context,posts):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def math_styles():
-            return render_math_styles(context)
+        def math_scripts():
+            return render_math_scripts(context)
         any = context.get('any', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
         if any(post.is_mathjax for post in posts):
             __M_writer('        ')
-            __M_writer(str(math_styles()))
+            __M_writer(str(math_scripts()))
             __M_writer('\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
 
 
-def render_math_styles(context):
+def render_math_styles_ifpost(context,post):
     __M_caller = context.caller_stack._push_frame()
     try:
-        use_katex = context.get('use_katex', UNDEFINED)
+        def math_styles():
+            return render_math_styles(context)
         __M_writer = context.writer()
         __M_writer('\n')
-        if use_katex:
-            __M_writer('        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">\n')
+        if post.is_mathjax:
+            __M_writer('        ')
+            __M_writer(str(math_styles()))
+            __M_writer('\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -75,29 +78,12 @@ def render_math_scripts_ifpost(context,post):
         context.caller_stack._pop_frame()
 
 
-def render_math_scripts_ifposts(context,posts):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        any = context.get('any', UNDEFINED)
-        def math_scripts():
-            return render_math_scripts(context)
-        __M_writer = context.writer()
-        __M_writer('\n')
-        if any(post.is_mathjax for post in posts):
-            __M_writer('        ')
-            __M_writer(str(math_scripts()))
-            __M_writer('\n')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
 def render_math_scripts(context):
     __M_caller = context.caller_stack._push_frame()
     try:
         mathjax_config = context.get('mathjax_config', UNDEFINED)
-        katex_auto_render = context.get('katex_auto_render', UNDEFINED)
         use_katex = context.get('use_katex', UNDEFINED)
+        katex_auto_render = context.get('katex_auto_render', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
         if use_katex:
@@ -121,14 +107,28 @@ def render_math_scripts(context):
         context.caller_stack._pop_frame()
 
 
-def render_math_styles_ifpost(context,post):
+def render_math_styles(context):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        use_katex = context.get('use_katex', UNDEFINED)
+        __M_writer = context.writer()
+        __M_writer('\n')
+        if use_katex:
+            __M_writer('        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_math_styles_ifposts(context,posts):
     __M_caller = context.caller_stack._push_frame()
     try:
         def math_styles():
             return render_math_styles(context)
+        any = context.get('any', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
-        if post.is_mathjax:
+        if any(post.is_mathjax for post in posts):
             __M_writer('        ')
             __M_writer(str(math_styles()))
             __M_writer('\n')
@@ -139,6 +139,6 @@ def render_math_styles_ifpost(context,post):
 
 """
 __M_BEGIN_METADATA
-{"source_encoding": "ascii", "line_map": {"130": 50, "131": 51, "132": 52, "133": 52, "134": 52, "140": 134, "16": 0, "21": 30, "22": 36, "23": 42, "24": 48, "25": 54, "26": 60, "32": 56, "39": 56, "40": 57, "41": 58, "42": 58, "43": 58, "49": 32, "54": 32, "55": 33, "56": 34, "62": 38, "68": 38, "69": 39, "70": 40, "71": 40, "72": 40, "78": 44, "85": 44, "86": 45, "87": 46, "88": 46, "89": 46, "95": 2, "102": 2, "103": 3, "104": 4, "105": 6, "106": 7, "107": 10, "108": 10, "109": 14, "110": 15, "111": 19, "112": 21, "113": 22, "114": 23, "115": 23, "116": 23, "117": 24, "118": 25, "124": 50}, "filename": "/usr/local/lib/python3.5/dist-packages/nikola/data/themes/base/templates/math_helper.tmpl", "uri": "math_helper.tmpl"}
+{"source_encoding": "ascii", "line_map": {"130": 56, "131": 57, "132": 58, "133": 58, "134": 58, "140": 134, "16": 0, "21": 30, "22": 36, "23": 42, "24": 48, "25": 54, "26": 60, "32": 44, "39": 44, "40": 45, "41": 46, "42": 46, "43": 46, "49": 50, "55": 50, "56": 51, "57": 52, "58": 52, "59": 52, "65": 38, "71": 38, "72": 39, "73": 40, "74": 40, "75": 40, "81": 2, "88": 2, "89": 3, "90": 4, "91": 6, "92": 7, "93": 10, "94": 10, "95": 14, "96": 15, "97": 19, "98": 21, "99": 22, "100": 23, "101": 23, "102": 23, "103": 24, "104": 25, "110": 32, "115": 32, "116": 33, "117": 34, "123": 56}, "uri": "math_helper.tmpl", "filename": "/usr/local/lib/python3.5/dist-packages/nikola/data/themes/base/templates/math_helper.tmpl"}
 __M_END_METADATA
 """

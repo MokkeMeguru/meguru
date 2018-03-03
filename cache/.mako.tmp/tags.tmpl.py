@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1520107190.5178802
+_modified_time = 1520107335.284332
 _enable_loop = True
-_template_filename = 'themes/bootstrap4/templates/tags.tmpl'
+_template_filename = '/usr/local/lib/python3.5/dist-packages/nikola/data/themes/bootstrap3/templates/tags.tmpl'
 _template_uri = 'tags.tmpl'
 _source_encoding = 'utf-8'
 _exports = ['content']
@@ -28,14 +28,14 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        range = context.get('range', UNDEFINED)
         items = context.get('items', UNDEFINED)
-        messages = context.get('messages', UNDEFINED)
         cat_items = context.get('cat_items', UNDEFINED)
-        title = context.get('title', UNDEFINED)
-        cat_hierarchy = context.get('cat_hierarchy', UNDEFINED)
-        len = context.get('len', UNDEFINED)
+        messages = context.get('messages', UNDEFINED)
+        range = context.get('range', UNDEFINED)
         hidden_tags = context.get('hidden_tags', UNDEFINED)
+        title = context.get('title', UNDEFINED)
+        len = context.get('len', UNDEFINED)
+        cat_hierarchy = context.get('cat_hierarchy', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
         __M_writer = context.writer()
@@ -53,14 +53,14 @@ def render_body(context,**pageargs):
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        range = context.get('range', UNDEFINED)
         items = context.get('items', UNDEFINED)
-        messages = context.get('messages', UNDEFINED)
         cat_items = context.get('cat_items', UNDEFINED)
-        title = context.get('title', UNDEFINED)
-        cat_hierarchy = context.get('cat_hierarchy', UNDEFINED)
-        len = context.get('len', UNDEFINED)
+        messages = context.get('messages', UNDEFINED)
+        range = context.get('range', UNDEFINED)
         hidden_tags = context.get('hidden_tags', UNDEFINED)
+        title = context.get('title', UNDEFINED)
+        len = context.get('len', UNDEFINED)
+        cat_hierarchy = context.get('cat_hierarchy', UNDEFINED)
         def content():
             return render_content(context)
         __M_writer = context.writer()
@@ -75,7 +75,7 @@ def render_content(context,**pageargs):
             for text, full_name, path, link, indent_levels, indent_change_before, indent_change_after in cat_hierarchy:
                 for i in range(indent_change_before):
                     __M_writer('            <ul class="list-inline">\n')
-                __M_writer('        <li class="list-inline-item"><a class="reference badge badge-secondary" href="')
+                __M_writer('        <li><a class="reference badge" href="')
                 __M_writer(str(link))
                 __M_writer('">')
                 __M_writer(filters.html_escape(str(text)))
@@ -94,7 +94,7 @@ def render_content(context,**pageargs):
             __M_writer('    <ul class="list-inline">\n')
             for text, link in items:
                 if text not in hidden_tags:
-                    __M_writer('            <li class="list-inline-item"><a class="reference badge badge-secondary" href="')
+                    __M_writer('            <li><a class="reference badge" href="')
                     __M_writer(str(link))
                     __M_writer('">')
                     __M_writer(filters.html_escape(str(text)))
@@ -107,6 +107,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"source_encoding": "utf-8", "line_map": {"67": 4, "68": 5, "69": 5, "70": 6, "71": 7, "72": 8, "73": 8, "74": 8, "75": 10, "76": 11, "77": 12, "78": 14, "79": 14, "80": 14, "81": 14, "82": 14, "83": 15, "84": 16, "85": 18, "86": 19, "87": 20, "88": 21, "89": 25, "90": 26, "27": 0, "92": 26, "93": 29, "94": 30, "95": 31, "96": 32, "97": 33, "98": 33, "91": 26, "100": 33, "101": 33, "102": 36, "42": 2, "108": 102, "47": 38, "99": 33, "53": 4}, "filename": "themes/bootstrap4/templates/tags.tmpl", "uri": "tags.tmpl"}
+{"source_encoding": "utf-8", "line_map": {"67": 4, "68": 5, "69": 5, "70": 6, "71": 7, "72": 8, "73": 8, "74": 8, "75": 10, "76": 11, "77": 12, "78": 14, "79": 14, "80": 14, "81": 14, "82": 14, "83": 15, "84": 16, "85": 18, "86": 19, "87": 20, "88": 21, "89": 25, "90": 26, "27": 0, "92": 26, "93": 29, "94": 30, "95": 31, "96": 32, "97": 33, "98": 33, "91": 26, "100": 33, "101": 33, "102": 36, "42": 2, "108": 102, "47": 38, "99": 33, "53": 4}, "uri": "tags.tmpl", "filename": "/usr/local/lib/python3.5/dist-packages/nikola/data/themes/bootstrap3/templates/tags.tmpl"}
 __M_END_METADATA
 """
