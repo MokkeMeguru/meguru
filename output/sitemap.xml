@@ -7,11 +7,15 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://mokkemeguru.github.io/meguru/</loc>
-  <lastmod>2018-03-03T19:39:00Z</lastmod>
+  <lastmod>2018-03-03T19:49:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://mokkemeguru.github.io/meguru/2018/</loc>
+  <lastmod>2018-03-03T19:49:00Z</lastmod>
  </url>
  <url>
   <loc>https://mokkemeguru.github.io/meguru/archive.html</loc>
-  <lastmod>2018-03-03T19:39:00Z</lastmod>
+  <lastmod>2018-03-03T19:48:00Z</lastmod>
  </url>
  <url>
   <loc>https://mokkemeguru.github.io/meguru/categories/</loc>
@@ -24,5 +28,9 @@
  <url>
   <loc>https://mokkemeguru.github.io/meguru/listings/</loc>
   <lastmod>2018-03-03T19:39:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://mokkemeguru.github.io/meguru/posts/hello-world/</loc>
+  <lastmod>2018-03-03T19:49:00Z</lastmod>
  </url>
 </urlset>
