@@ -1,16 +1,16 @@
-# -*- coding:ascii -*-
+# -*- coding:utf-8 -*-
 from mako import runtime, filters, cache
 UNDEFINED = runtime.UNDEFINED
 STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1520107020.5171971
+_modified_time = 1520107190.4860475
 _enable_loop = True
-_template_filename = 'themes/yesplease/templates/list.tmpl'
+_template_filename = '/usr/local/lib/python3.5/dist-packages/nikola/data/themes/base/templates/list.tmpl'
 _template_uri = 'list.tmpl'
-_source_encoding = 'ascii'
-_exports = ['page_title']
+_source_encoding = 'utf-8'
+_exports = ['content']
 
 
 def _mako_get_namespace(context, name):
@@ -20,54 +20,82 @@ def _mako_get_namespace(context, name):
         _mako_generate_namespaces(context)
         return context.namespaces[(__name__, name)]
 def _mako_generate_namespaces(context):
-    pass
+    ns = runtime.TemplateNamespace('archive_nav', context._clean_inheritance_tokens(), templateuri='archive_navigation_helper.tmpl', callables=None,  calling_uri=_template_uri)
+    context.namespaces[(__name__, 'archive_nav')] = ns
+
+    ns = runtime.TemplateNamespace('feeds_translations', context._clean_inheritance_tokens(), templateuri='feeds_translations_helper.tmpl', callables=None,  calling_uri=_template_uri)
+    context.namespaces[(__name__, 'feeds_translations')] = ns
+
 def _mako_inherit(template, context):
     _mako_generate_namespaces(context)
-    return runtime._inherit_from(context, '/_base.tmpl', _template_uri)
+    return runtime._inherit_from(context, 'base.tmpl', _template_uri)
 def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        def page_title():
-            return render_page_title(context._locals(__M_locals))
-        messages = context.get('messages', UNDEFINED)
-        title = context.get('title', UNDEFINED)
-        items = context.get('items', UNDEFINED)
+        _import_ns = {}
+        _mako_get_namespace(context, 'archive_nav')._populate(_import_ns, ['*'])
+        _mako_get_namespace(context, 'feeds_translations')._populate(_import_ns, ['*'])
+        archive_nav = _mako_get_namespace(context, 'archive_nav')
+        feeds_translations = _mako_get_namespace(context, 'feeds_translations')
+        items = _import_ns.get('items', context.get('items', UNDEFINED))
+        messages = _import_ns.get('messages', context.get('messages', UNDEFINED))
+        title = _import_ns.get('title', context.get('title', UNDEFINED))
+        def content():
+            return render_content(context._locals(__M_locals))
         __M_writer = context.writer()
+        __M_writer('\n')
+        __M_writer('\n')
         __M_writer('\n\n')
-        __M_writer('\n\n')
-        if 'parent' not in context._data or not hasattr(context._data['parent'], 'page_title'):
-            context['self'].page_title(**pageargs)
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
+            context['self'].content(**pageargs)
         
 
-        __M_writer('\n\n<article class="yp-post-group__body">\n')
-        if items:
-            __M_writer('    <ul class="yp-post-list">\n')
-            for text, link, count in items:
-                __M_writer('      <li class="yp-post-list__item">\n        <h3 class="yp-post-list__title">\n          <a class="reference yp-post-list__link" href="')
-                __M_writer(str(link))
-                __M_writer('">')
-                __M_writer(filters.html_escape(str(text)))
-                __M_writer('</a>\n        </h3>\n      </li>\n')
-            __M_writer('    </ul>\n')
-        else:
-            __M_writer('    <p>')
-            __M_writer(str(messages("Nothing found.")))
-            __M_writer('</p>\n')
-        __M_writer('</article>')
+        __M_writer('\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
 
 
-def render_page_title(context,**pageargs):
+def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def page_title():
-            return render_page_title(context)
-        title = context.get('title', UNDEFINED)
+        _import_ns = {}
+        _mako_get_namespace(context, 'archive_nav')._populate(_import_ns, ['*'])
+        _mako_get_namespace(context, 'feeds_translations')._populate(_import_ns, ['*'])
+        archive_nav = _mako_get_namespace(context, 'archive_nav')
+        feeds_translations = _mako_get_namespace(context, 'feeds_translations')
+        items = _import_ns.get('items', context.get('items', UNDEFINED))
+        messages = _import_ns.get('messages', context.get('messages', UNDEFINED))
+        title = _import_ns.get('title', context.get('title', UNDEFINED))
+        def content():
+            return render_content(context)
         __M_writer = context.writer()
-        __M_writer(str(title))
+        __M_writer('\n<article class="listpage">\n    <header>\n        <h1>')
+        __M_writer(filters.html_escape(str(title)))
+        __M_writer('</h1>\n    </header>\n    ')
+        __M_writer(str(archive_nav.archive_navigation()))
+        __M_writer('\n    ')
+        __M_writer(str(feeds_translations.translation_link()))
+        __M_writer('\n')
+        if items:
+            __M_writer('    <ul class="postlist">\n')
+            for text, link, count in items:
+                __M_writer('        <li><a href="')
+                __M_writer(str(link))
+                __M_writer('">')
+                __M_writer(filters.html_escape(str(text)))
+                __M_writer('</a>\n')
+                if count:
+                    __M_writer('            (')
+                    __M_writer(str(count))
+                    __M_writer(')\n')
+            __M_writer('    </ul>\n')
+        else:
+            __M_writer('    <p>')
+            __M_writer(str(messages("Nothing found.")))
+            __M_writer('</p>\n')
+        __M_writer('</article>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -75,6 +103,6 @@ def render_page_title(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "themes/yesplease/templates/list.tmpl", "source_encoding": "ascii", "line_map": {"37": 14, "38": 16, "76": 70, "43": 18, "44": 21, "45": 22, "46": 23, "47": 24, "48": 26, "49": 26, "50": 26, "51": 26, "52": 30, "53": 31, "54": 32, "55": 32, "56": 32, "57": 34, "27": 0, "70": 18, "63": 18}, "uri": "list.tmpl"}
+{"source_encoding": "utf-8", "line_map": {"96": 23, "74": 6, "75": 9, "76": 9, "77": 11, "78": 11, "79": 12, "80": 12, "81": 13, "82": 14, "83": 15, "84": 16, "85": 16, "86": 16, "23": 3, "88": 16, "89": 17, "26": 4, "91": 18, "92": 18, "90": 18, "94": 22, "95": 23, "32": 0, "97": 23, "98": 25, "104": 98, "93": 21, "47": 2, "48": 3, "49": 4, "54": 26, "87": 16, "60": 6}, "filename": "/usr/local/lib/python3.5/dist-packages/nikola/data/themes/base/templates/list.tmpl", "uri": "list.tmpl"}
 __M_END_METADATA
 """

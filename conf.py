@@ -141,7 +141,7 @@ NAVIGATION_LINKS = {
 }
 
 # Name of the theme to use.
-THEME = "yesplease"
+THEME = "bootstrap4"
 #"bootstrap3"
 
 # Primary color of your theme. This will be used to customize your theme and
