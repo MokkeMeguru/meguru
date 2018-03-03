@@ -12,4 +12,4 @@
 
 * Hello World
   Nikola + Org-mode で記事を作成しました
-  [[img-url:/images/plants.png]]
+  [[img-url:/images/plant2.png]]
