@@ -1,0 +1,4 @@
+Sitemap: https://mokkemeguru.github.io/meguru/sitemapindex.xml
+
+User-Agent: *
+Host: mokkemeguru.github.io

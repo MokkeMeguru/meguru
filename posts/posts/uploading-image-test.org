@@ -1,0 +1,14 @@
+#+BEGIN_COMMENT
+.. title: Uploading Image Test
+.. slug: uploading-image-test
+.. date: 2018-03-03 19:03:33 UTC
+.. tags: 
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+
+* 画像のアップロートについてのテスト
+  [[img-url:/images/plant2.png]]
