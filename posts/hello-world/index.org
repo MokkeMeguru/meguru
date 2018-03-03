@@ -1,0 +1,15 @@
+#+BEGIN_COMMENT
+.. title: Hello World
+.. slug: hello-world
+.. date: 2018-03-04 04:47:48 UTC+09:00
+.. tags: 
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+
+* Hello World
+  Nikola + Org-mode で記事を作成しました
+  [[img-url:/images/plants.png]]
