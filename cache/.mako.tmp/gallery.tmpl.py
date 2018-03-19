@@ -5,12 +5,12 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1521488300.7297966
+_modified_time = 1521488834.0479856
 _enable_loop = True
 _template_filename = '/usr/local/lib/python3.5/dist-packages/nikola/data/themes/bootstrap3/templates/gallery.tmpl'
 _template_uri = 'gallery.tmpl'
 _source_encoding = 'utf-8'
-_exports = ['extra_head', 'content', 'sourcelink', 'extra_js']
+_exports = ['sourcelink', 'content', 'extra_head', 'extra_js']
 
 
 def _mako_get_namespace(context, name):
@@ -35,32 +35,32 @@ def render_body(context,**pageargs):
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         _import_ns = {}
         _mako_get_namespace(context, 'ui')._populate(_import_ns, ['bar'])
-        gallery_path = _import_ns.get('gallery_path', context.get('gallery_path', UNDEFINED))
-        site_has_comments = _import_ns.get('site_has_comments', context.get('site_has_comments', UNDEFINED))
-        ui = _mako_get_namespace(context, 'ui')
-        thumbnail_size = _import_ns.get('thumbnail_size', context.get('thumbnail_size', UNDEFINED))
-        permalink = _import_ns.get('permalink', context.get('permalink', UNDEFINED))
-        folders = _import_ns.get('folders', context.get('folders', UNDEFINED))
-        post = _import_ns.get('post', context.get('post', UNDEFINED))
-        translations = _import_ns.get('translations', context.get('translations', UNDEFINED))
+        comments = _mako_get_namespace(context, 'comments')
+        photo_array = _import_ns.get('photo_array', context.get('photo_array', UNDEFINED))
         def sourcelink():
             return render_sourcelink(context._locals(__M_locals))
-        crumbs = _import_ns.get('crumbs', context.get('crumbs', UNDEFINED))
-        def extra_head():
-            return render_extra_head(context._locals(__M_locals))
-        photo_array_json = _import_ns.get('photo_array_json', context.get('photo_array_json', UNDEFINED))
-        photo_array = _import_ns.get('photo_array', context.get('photo_array', UNDEFINED))
-        parent = _import_ns.get('parent', context.get('parent', UNDEFINED))
-        def content():
-            return render_content(context._locals(__M_locals))
-        comments = _mako_get_namespace(context, 'comments')
-        title = _import_ns.get('title', context.get('title', UNDEFINED))
+        site_has_comments = _import_ns.get('site_has_comments', context.get('site_has_comments', UNDEFINED))
         lang = _import_ns.get('lang', context.get('lang', UNDEFINED))
+        folders = _import_ns.get('folders', context.get('folders', UNDEFINED))
+        _link = _import_ns.get('_link', context.get('_link', UNDEFINED))
+        crumbs = _import_ns.get('crumbs', context.get('crumbs', UNDEFINED))
+        post = _import_ns.get('post', context.get('post', UNDEFINED))
+        title = _import_ns.get('title', context.get('title', UNDEFINED))
         def extra_js():
             return render_extra_js(context._locals(__M_locals))
-        _link = _import_ns.get('_link', context.get('_link', UNDEFINED))
         enable_comments = _import_ns.get('enable_comments', context.get('enable_comments', UNDEFINED))
+        thumbnail_size = _import_ns.get('thumbnail_size', context.get('thumbnail_size', UNDEFINED))
+        def content():
+            return render_content(context._locals(__M_locals))
+        def extra_head():
+            return render_extra_head(context._locals(__M_locals))
         len = _import_ns.get('len', context.get('len', UNDEFINED))
+        photo_array_json = _import_ns.get('photo_array_json', context.get('photo_array_json', UNDEFINED))
+        translations = _import_ns.get('translations', context.get('translations', UNDEFINED))
+        ui = _mako_get_namespace(context, 'ui')
+        gallery_path = _import_ns.get('gallery_path', context.get('gallery_path', UNDEFINED))
+        parent = _import_ns.get('parent', context.get('parent', UNDEFINED))
+        permalink = _import_ns.get('permalink', context.get('permalink', UNDEFINED))
         __M_writer = context.writer()
         __M_writer('\n')
         __M_writer('\n')
@@ -90,31 +90,14 @@ def render_body(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_extra_head(context,**pageargs):
+def render_sourcelink(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         _import_ns = {}
         _mako_get_namespace(context, 'ui')._populate(_import_ns, ['bar'])
-        def extra_head():
-            return render_extra_head(context)
-        gallery_path = _import_ns.get('gallery_path', context.get('gallery_path', UNDEFINED))
-        parent = _import_ns.get('parent', context.get('parent', UNDEFINED))
-        lang = _import_ns.get('lang', context.get('lang', UNDEFINED))
-        translations = _import_ns.get('translations', context.get('translations', UNDEFINED))
-        _link = _import_ns.get('_link', context.get('_link', UNDEFINED))
-        len = _import_ns.get('len', context.get('len', UNDEFINED))
+        def sourcelink():
+            return render_sourcelink(context)
         __M_writer = context.writer()
-        __M_writer('\n')
-        __M_writer(str(parent.extra_head()))
-        __M_writer('\n<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">\n<style type="text/css">\n    .image-block {\n        display: inline-block;\n    }\n    .flowr_row {\n        width: 100%;\n    }\n    </style>\n')
-        if len(translations) > 1:
-            for langname in translations.keys():
-                if langname != lang:
-                    __M_writer('             <link rel="alternate" hreflang="')
-                    __M_writer(str(langname))
-                    __M_writer('" href="')
-                    __M_writer(str(_link('gallery', gallery_path, langname)))
-                    __M_writer('">\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -125,18 +108,18 @@ def render_content(context,**pageargs):
     try:
         _import_ns = {}
         _mako_get_namespace(context, 'ui')._populate(_import_ns, ['bar'])
-        crumbs = _import_ns.get('crumbs', context.get('crumbs', UNDEFINED))
-        site_has_comments = _import_ns.get('site_has_comments', context.get('site_has_comments', UNDEFINED))
+        comments = _mako_get_namespace(context, 'comments')
         photo_array = _import_ns.get('photo_array', context.get('photo_array', UNDEFINED))
-        ui = _mako_get_namespace(context, 'ui')
+        site_has_comments = _import_ns.get('site_has_comments', context.get('site_has_comments', UNDEFINED))
         def content():
             return render_content(context)
         folders = _import_ns.get('folders', context.get('folders', UNDEFINED))
-        comments = _mako_get_namespace(context, 'comments')
-        permalink = _import_ns.get('permalink', context.get('permalink', UNDEFINED))
-        post = _import_ns.get('post', context.get('post', UNDEFINED))
+        crumbs = _import_ns.get('crumbs', context.get('crumbs', UNDEFINED))
+        ui = _mako_get_namespace(context, 'ui')
         title = _import_ns.get('title', context.get('title', UNDEFINED))
+        post = _import_ns.get('post', context.get('post', UNDEFINED))
         enable_comments = _import_ns.get('enable_comments', context.get('enable_comments', UNDEFINED))
+        permalink = _import_ns.get('permalink', context.get('permalink', UNDEFINED))
         __M_writer = context.writer()
         __M_writer('\n    ')
         __M_writer(str(ui.bar(crumbs)))
@@ -180,14 +163,31 @@ def render_content(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_sourcelink(context,**pageargs):
+def render_extra_head(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         _import_ns = {}
         _mako_get_namespace(context, 'ui')._populate(_import_ns, ['bar'])
-        def sourcelink():
-            return render_sourcelink(context)
+        lang = _import_ns.get('lang', context.get('lang', UNDEFINED))
+        def extra_head():
+            return render_extra_head(context)
+        _link = _import_ns.get('_link', context.get('_link', UNDEFINED))
+        len = _import_ns.get('len', context.get('len', UNDEFINED))
+        translations = _import_ns.get('translations', context.get('translations', UNDEFINED))
+        gallery_path = _import_ns.get('gallery_path', context.get('gallery_path', UNDEFINED))
+        parent = _import_ns.get('parent', context.get('parent', UNDEFINED))
         __M_writer = context.writer()
+        __M_writer('\n')
+        __M_writer(str(parent.extra_head()))
+        __M_writer('\n<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">\n<style type="text/css">\n    .image-block {\n        display: inline-block;\n    }\n    .flowr_row {\n        width: 100%;\n    }\n    </style>\n')
+        if len(translations) > 1:
+            for langname in translations.keys():
+                if langname != lang:
+                    __M_writer('             <link rel="alternate" hreflang="')
+                    __M_writer(str(langname))
+                    __M_writer('" href="')
+                    __M_writer(str(_link('gallery', gallery_path, langname)))
+                    __M_writer('">\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -199,9 +199,9 @@ def render_extra_js(context,**pageargs):
         _import_ns = {}
         _mako_get_namespace(context, 'ui')._populate(_import_ns, ['bar'])
         photo_array_json = _import_ns.get('photo_array_json', context.get('photo_array_json', UNDEFINED))
+        thumbnail_size = _import_ns.get('thumbnail_size', context.get('thumbnail_size', UNDEFINED))
         def extra_js():
             return render_extra_js(context)
-        thumbnail_size = _import_ns.get('thumbnail_size', context.get('thumbnail_size', UNDEFINED))
         __M_writer = context.writer()
         __M_writer('\n<script src="/assets/js/flowr.plugin.js"></script>\n<script>\njsonContent = ')
         __M_writer(str(photo_array_json))
@@ -215,6 +215,6 @@ def render_extra_js(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"uri": "gallery.tmpl", "source_encoding": "utf-8", "line_map": {"151": 14, "141": 7, "142": 8, "143": 8, "144": 9, "145": 10, "146": 10, "147": 10, "148": 12, "149": 13, "150": 14, "23": 3, "152": 17, "153": 18, "26": 4, "155": 20, "156": 20, "154": 19, "158": 20, "159": 20, "32": 0, "161": 24, "162": 26, "163": 27, "164": 29, "165": 30, "166": 30, "167": 30, "168": 30, "169": 30, "170": 31, "171": 31, "172": 31, "173": 31, "174": 33, "157": 20, "176": 37, "177": 37, "183": 5, "65": 2, "66": 3, "67": 4, "196": 62, "72": 5, "210": 68, "160": 22, "77": 39, "206": 62, "207": 65, "208": 65, "209": 68, "82": 59, "87": 102, "216": 210, "93": 41, "107": 41, "108": 42, "109": 42, "110": 52, "111": 53, "112": 54, "113": 55, "114": 55, "115": 55, "116": 55, "117": 55, "175": 36, "123": 7}, "filename": "/usr/local/lib/python3.5/dist-packages/nikola/data/themes/bootstrap3/templates/gallery.tmpl"}
+{"uri": "gallery.tmpl", "filename": "/usr/local/lib/python3.5/dist-packages/nikola/data/themes/bootstrap3/templates/gallery.tmpl", "line_map": {"128": 10, "129": 10, "130": 10, "131": 12, "132": 13, "133": 14, "134": 14, "135": 17, "136": 18, "137": 19, "138": 20, "139": 20, "140": 20, "141": 20, "142": 20, "143": 22, "144": 24, "145": 26, "146": 27, "147": 29, "148": 30, "149": 30, "150": 30, "23": 3, "152": 30, "153": 31, "26": 4, "155": 31, "156": 31, "154": 31, "158": 36, "159": 37, "32": 0, "166": 41, "157": 33, "180": 41, "181": 42, "182": 42, "183": 52, "184": 53, "185": 54, "186": 55, "187": 55, "151": 30, "189": 55, "190": 55, "65": 2, "66": 3, "67": 4, "196": 62, "72": 5, "160": 37, "77": 39, "206": 62, "207": 65, "208": 65, "209": 68, "82": 59, "87": 102, "216": 210, "93": 5, "188": 55, "106": 7, "210": 68, "124": 7, "125": 8, "126": 8, "127": 9}, "source_encoding": "utf-8"}
 __M_END_METADATA
 """
