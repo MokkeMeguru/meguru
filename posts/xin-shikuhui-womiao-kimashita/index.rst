@@ -12,6 +12,8 @@
 ===============================================      
 
 .. image:: /images/3.png
+   :alt: image2.png
 
 絵に関するコメントは以下に
+
 * http://seiga.nicovideo.jp/seiga/im7971144
