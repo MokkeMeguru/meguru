@@ -6,11 +6,9 @@
 .. link: 
 .. description: 
 .. type: text
-
-
+===============================================
 私服の沖田さん(Fate/Grand Order)を描きました。
-
-.. image:: ../images/3.png
-
+===============================================      
+.. image:: images/3.png
 絵に関するコメントは以下に
 * http://seiga.nicovideo.jp/seiga/im7971144
